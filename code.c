@@ -1,13 +1,15 @@
 #include <stdio.h>
-#include <string.h>
-int main(int argc, char* argv[]){
-    FILE *file;
-    char *fname = argv[1];
-    char str[255];
-    while(fopen(argv[1],"r") == NULL){
-        file = fopen(argv[1], "r");
-        printf("This program needs file, please, provide it with an argument of command line");
-        return 0;
-    }
-    fclose(file);
+int main(int argc, char *argv[]){
+	FILE *file; 
+	int bytes, num1;
+	float num2;
+	char *fname = argv[1];
+	char string[255];
+	file = fopen(fname,"rb");
+	while(file == NULL)
+	{
+		printf("не могу открыть файл '%s'",fname);
+		return 0;
+	}
+	/*число с плавающей точкой занимает 8 байт, целое число - 8 байт, строка - по 1 байту на символ*/
 }
