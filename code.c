@@ -12,14 +12,14 @@ int main(int argc, char *argv[])
    while(f1==NULL){
      printf("Be a good comrade and show the KGB your file: ");
      scanf("%s", &path);
-     f1 = fopen(&path, "r");
+     f1 = fopen(path, "r");
+     printf("Something went wrong, you're not a good comrade, i see...\n'%s' isn't file we look for\n", &path);
    }
    printf("\nSo what we've got here...\n");
     // определяем размер файла
   fseek(f1 , 0 , SEEK_END);                          // устанавливаем позицию в конец файла
   long lSize = ftell(f1);                            // получаем размер в байтах
   rewind (f1);
-
   char *s = (char*) malloc(sizeof(char) * lSize); // выделить память для хранения содержимого файла
   if (s == NULL)
   {
@@ -35,5 +35,4 @@ int main(int argc, char *argv[])
   printf("Comrade Colonel, there'd found %d strings and %d bytes of information! Shoot? \n", k, lSize);/*Written 100 records, total 26400 bytes*/
   fclose (f1);
    return 0;
-   /*system("pause");*/
 }
